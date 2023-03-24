@@ -29,7 +29,11 @@ class LogReg:
             
 
 
+st.write("""
+# Привет! Я здесь, чтобы помочь тебе рассчитать веса методом логистической регрессии для твоего датафрейма!
 
+###Загрузи свой CSV-файл и выбери столбец, в котором расположены таргентные значения
+""")
 uploaded_file = st.file_uploader("Загрузите свой CSV файл",type = ['csv'])
 
 if uploaded_file is not None:
@@ -45,7 +49,10 @@ if uploaded_file is not None:
     data = pd.DataFrame(dict(zip(('w%d' %i for i in range(1, 1+len(X.columns))), np.round(lg.coef_, 3))),index = range(1))
     data['w0']=np.round(lg.intercept_,3)
     st.dataframe(data)
-
+    
+    st.write("""
+    ###Бонус!:)
+    """)
     x = st.selectbox(label = 'Выбери фичу по оси x', options = names.insert(0,''))
     y = st.selectbox(label = 'Выбери фичу по оси y', options = names.insert(0,''))
 
